@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN"> <!-- 改为中文语言标识，更贴合内容场景 -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 适配移动端，响应式基础 -->
+    <title>我的个人主页</title>
+    <style>
+        /* 全局样式重置与基础配置，消除浏览器默认差异 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 盒模型优化，避免宽高溢出 */
+        }
+
+        body {
+            font-family: "微软雅黑", "Microsoft YaHei", Arial, sans-serif; /* 补充英文标识，提升兼容性 */
+            background-color: #f5f7fa; /* 柔和浅灰背景，替代纯白更护眼 */
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px 20px; /* 上下内边距增加，更宽松 */
+            line-height: 1.8; /* 行高微调，提升可读性 */
+            color: #333; /* 全局默认文字颜色，避免过亮 */
+        }
+
+        /* 标题样式优化，建立视觉层次 */
+        h1{
+            color: #e53e3e; /* 柔和红，替代刺眼纯红 */
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem; /* 替代br标签，更规范的间距控制 */
+            font-weight: 700;
+        }
+
+        h2{
+            color: #2b6cb0; /* 柔和蓝，替代纯蓝 */
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem; /* 上下间距，区分内容模块 */
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0; /* 底部边框，强化模块标题视觉 */
+            font-weight: 600;
+        }
+
+        /* 段落样式优化 */
+        p{
+            color: #2d3748; /* 深灰黑，替代浅绿，提升可读性 */
+            text-align: left;
+            margin-bottom: 1rem; /* 段落间距，避免拥挤 */
+            font-size: 1rem;
+        }
+
+        /* 列表样式优化 */
+        ul, ol {
+            color: #805ad5; /* 柔和紫，替代深粉紫 */
+            margin: 1rem 0 1.5rem 30px;
+            line-height: 2;
+            font-size: 1rem;
+        }
+
+        ul li, ol li {
+            margin-bottom: 0.5rem; /* 列表项间距，更清晰 */
+        }
+
+        /* 链接样式优化，提升交互体验 */
+        a{
+            color: #38a169; /* 柔和绿，替代纯绿 */
+            text-decoration: none;
+            transition: color 0.3s ease; /* 过渡动画，更顺滑 */
+        }
+
+        a:hover{
+            color: #9f7aea; /* 柔和浅紫，替代荧光绿，更协调 */
+            text-decoration: underline; /* 悬停下划线，明确可点击标识 */
+        }
+
+        a:active{
+            color: #e53e3e; /* 与h1颜色统一，保持视觉一致性 */
+        }
+
+        /* 分割线样式优化 */
+        hr{
+            border: none;
+            height: 3px;
+            background: linear-gradient(to right, #48bb78, #2b6cb0); /* 柔和渐变色，替代原亮色 */
+            margin: 2rem 0; /* 上下间距，避免与内容粘连 */
+            border-radius: 2px; /* 圆角处理，更柔和 */
+        }
+
+        /* 图片样式优化 */
+        img{
+            display: block;
+            margin: 1.5rem auto;
+            width: 100%;
+            max-width: 500px; /* 最大宽度限制，适配小屏幕 */
+            height: auto; /* 自动高度，保持图片比例 */
+            border-radius: 12px; /* 圆角处理，避免生硬直角 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 轻微阴影，提升立体感 */
+            object-fit: cover; /* 保持图片完整性，避免变形 */
+        }
+
+        /* 表格样式优化，提升美观度与可读性 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff; /* 白色背景，替代纯红，提升可读性 */
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 1.5rem 0 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 阴影提升立体感 */
+        }
+
+        th, td {
+            padding: 15px 20px; /* 左右内边距增加，更宽松 */
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        th {
+            background-color: #e53e3e; /* 与h1颜色统一，保持视觉一致性 */
+            color: #ffffff; /* 白色文字，替代黑色，提升对比度与可读性 */
+            font-weight: 600;
+            text-transform: uppercase; /* 大写转换，强化表头视觉 */
+            letter-spacing: 1px; /* 字母间距，提升美观度 */
+        }
+
+        /* 表格隔行变色，提升可读性 */
+        tr:nth-child(even) {
+            background-color: #f7fafc; /* 浅灰背景，区分奇数行 */
+        }
+
+        tr:hover {
+            background-color: #edf2f7; /* 悬停变色，提升交互体验 */
+        }
+
+        /* 表单样式优化，更美观、更易用 */
+        form {
+            background-color: #ffffff; /* 白色背景，替代深紫，提升可读性 */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* 柔和阴影，提升立体感 */
+            margin: 1.5rem 0 2rem;
+        }
+
+        label {
+            color: #2d3748; /* 深灰黑，替代亮黄，提升可读性 */
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%; /* 改为100%宽度，适配表单容器，更美观 */
+            padding: 12px 15px;
+            margin-bottom: 1.2rem;
+            border: 1px solid #e2e8f0; /* 浅灰边框，替代默认黑色 */
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #2d3748; /* 深灰黑，替代浅绿，提升可读性 */
+            transition: all 0.3s ease; /* 全属性过渡，更顺滑 */
+            background-color: #f7fafc; /* 浅灰背景，区分输入框与表单背景 */
+        }
+
+        /* 输入框聚焦样式优化，更醒目 */
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #2b6cb0; /* 与h2颜色统一，保持视觉一致性 */
+            box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1); /* 柔和聚焦阴影，不刺眼 */
+            background-color: #ffffff; /* 聚焦时白色背景，提升视觉反馈 */
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.8;
+            max-height: 300px; /* 限制最大高度，避免表单溢出 */
+        }
+
+        /* 按钮样式优化，提升视觉吸引力与交互体验 */
+        button {
+            padding: 12px 30px;
+            background: #2b6cb0; /* 与h2颜色统一，保持视觉一致性 */
+            color: #ffffff; /* 白色文字，提升对比度 */
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease; /* 全属性过渡，更顺滑 */
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.2); /* 柔和阴影，与按钮颜色匹配 */
+            display: inline-block; /* 行内块，避免占满整行 */
+        }
+
+        button:hover {
+            transform: translateY(-2px); /* 轻微上移，提升交互反馈 */
+            box-shadow: 0 6px 16px rgba(43, 108, 176, 0.3); /* 阴影加深，强化悬停效果 */
+            background: #2c5282; /* 深色变体，提升视觉反馈 */
+        }
+
+        button:active {
+            transform: translateY(0); /* 恢复原位，模拟按压效果 */
+            box-shadow: 0 2px 8px rgba(43, 108, 176, 0.2); /* 阴影变浅，强化按压效果 */
+        }
+    </style>
+</head>
+<body>
+<h1>欢迎来到我的个人主页</h1>
+<hr> <!-- 移除多余br标签，通过CSS margin控制间距，更规范 -->
+
+<h2>关于我</h2>
+<img src="wo.png" alt="这是我" > <!-- 移除行内width，通过CSS控制，更灵活 -->
+<p>大家好！我今年22岁，是一名数据科学与大数据技术专业的学生。</p>
+<p>我喜欢唱、跳、rap和打篮球。我的座右铭是：“学无止境，每天进步一点点。”</p>
+
+<h2>我的技能</h2>
+<ul>
+    <li>HTML网页制作</li>
+    <li>Python编程</li>
+    <li>Office办公软件</li>
+    <li>摄影与修图</li>
+</ul>
+
+<h2>我的学习计划</h2>
+<ol>
+    <li>学习HTML基础</li>
+    <li>学习CSS样式</li> <!-- 修复原代码中的单引号语法错误 -->
+    <li>学习JavaScript交互</li>
+    <li>完成一个完整的网站项目</li>
+</ol>
+
+<h2>我喜欢的网站</h2>
+<p>以下是一些我经常访问的网站：</p>
+<ul>
+    <li><a href="https://www.baidu.com/" target="_blank">百度</a></li> <!-- 新增target="_blank"，新窗口打开，提升体验 -->
+    <li><a href="https://www.bilibili.com/" target="_blank">哔哩哔哩</a></li>
+    <li><a href="https://www.douyin.com/" target="_blank">抖音</a></li>
+</ul>
+
+<h2>联系我</h2>
+<table>
+    <tr>
+        <th>联系方式</th>
+        <th>内容</th>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td>12345@qq.com</td>
+    </tr>
+    <tr>
+        <td>电话</td>
+        <td>67890</td>
+    </tr>
+    <tr>
+        <td>地址</td>
+        <td>重庆科技大学</td>
+    </tr>
+</table>
+
+<h2>给我留言</h2>
+<form>
+    <div> <!-- 用div替代p标签包裹表单元素，更语义化 -->
+        <label for="name">你的名字：</label>
+        <input type="text" name="name" id="name" placeholder="请输入你的姓名"> <!-- 新增占位符，提升易用性 -->
+    </div>
+    <div>
+        <label for="email">你的邮箱：</label>
+        <input type="email" id="email" name="email" placeholder="请输入你的邮箱"> <!-- 补充name属性，修复表单不完整问题，新增占位符 -->
+    </div>
+    <div>
+        <label for="message">留言内容：</label>
+        <textarea name="message" rows="4" id="message" placeholder="请输入你的留言内容"></textarea> <!-- 新增占位符，提升易用性 -->
+    </div>
+    <div>
+        <button type="submit">提交留言</button>
+    </div>
+</form>
+</body>
+</html>
