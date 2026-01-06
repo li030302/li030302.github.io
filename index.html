@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1{
+            color:red;
+            text-align: center;
+        }
+        h2{
+            color:blue;
+        }
+        p{
+            color: #47d890;
+            text-align: left;
+        }
+        ul, ol {
+            color: #b83c95;
+            margin: 15px 0 15px 30px;
+            line-height: 2;
+        }
+        a{
+            color:green;
+            text-decoration: none;
+        }
+        a:hover{
+            color: greenyellow;
+        }
+        a:active{
+            color:red;
+        }
+        body {
+            font-family:"微软雅黑",Arial,sans-serif;
+            background-color: #ffffff;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        hr{
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #8fd425, #2f60ff);
+        }
+        img{
+            display: block;
+            margin: 0 auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #e44b4b;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #e44b4b;
+            color: black;
+            font-weight: 600;
+        }
+
+
+        form {
+            background-color: #4a1b9a;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow:2px 2px 5px #888888;
+            margin: 20px 0;
+        }
+
+        label {
+            color: #edcf0d;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 90%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border: 1px solid;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #2ecca2;
+            transition: border-color 0.3s ease;
+        }
+
+        /* 输入框聚焦样式 */
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #6d1cc3;
+            box-shadow: 0 0 0 3px rgba(44, 124, 242, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.6;
+        }
+        button {
+            padding: 12px 30px;
+            background: #52af33;
+            color: #13477c;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(44, 124, 242, 0.2);
+        }
+    </style>
+</head>
+<body>
+<h1>欢迎来到我的个人主页</h1>
+<br>
+<hr>
+<br>
+<h2>关于我</h2>
+<img src="wo.png" alt="这是我" width="500">
+<p>大家好！我今年22岁，是一名数据科学与大数据技术专业的学生。</p>
+<p>我喜欢唱、跳、rap和打篮球。我的座右铭是：“学无止境，每天进步一点点。”</p>
+<h2>我的技能</h2>
+<ul>
+    <li>HTML网页制作</li>
+    <li>Python编程</li>
+    <li>Office办公软件</li>
+    <li>摄影与修图</li>
+</ul>
+<h2>我的学习计划</h2>
+<ol>
+    <li>学习HTML基础</li>
+    <li>学习CSS样式'</li>
+    <li>学习JavaScript交互</li>
+    <li>完成一个完整的网站项目</li>
+</ol>
+<h2>我喜欢的网站</h2>
+<p>以下是一些我经常访问的网站：</p>
+<ul>
+    <li><a href="https://www.baidu.com/">百度</a></li>
+    <li><a href="https://www.bilibili.com/">哔哩哔哩</a></li>
+    <li><a href="https://www.douyin.com/">抖音</a></li>
+</ul>
+<h2>联系我</h2>
+<table>
+    <tr>
+        <th>联系方式</th>
+        <th>内容</th>
+    </tr>
+    <tr>
+        <td>邮箱</td>
+        <td>12345@qq.com</td>
+    </tr>
+    <tr>
+        <td>电话</td>
+        <td>67890</td>
+    </tr>
+    <tr>
+        <td>地址</td>
+        <td>重庆科技大学</td>
+    </tr>
+</table>
+<h2>给我留言</h2>
+<form>
+    <p>
+        <label for="name">你的名字：</label><br>
+        <input type="text" name="name" id="name">
+    </p>
+    <p>
+        <label for="email">你的邮箱：</label><br>
+        <input type="email" id="email">
+    </p>
+    <p>
+        <label for="message">留言内容：</label><br>
+        <textarea name="message" rows="4" id="message"></textarea>
+    </p>
+    <p>
+        <button type="submit">提交留言</button>
+    </p>
+</form>
+</body>
+</html>
